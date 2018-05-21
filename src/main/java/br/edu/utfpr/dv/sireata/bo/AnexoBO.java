@@ -1,5 +1,8 @@
 package br.edu.utfpr.dv.sireata.bo;
 
+import br.edu.utfpr.dv.sireata.algorithms.anexo.AnexoDeleteDAO;
+import br.edu.utfpr.dv.sireata.algorithms.anexo.AnexoReadDAO;
+import br.edu.utfpr.dv.sireata.algorithms.anexo.AnexoUpdateDAO;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,9 +14,9 @@ public class AnexoBO {
 
 	public Anexo buscarPorId(int id) throws Exception{
 		try{
-			AnexoDAO dao = new AnexoDAO();
+			AnexoDAO dao = new AnexoDAO(new AnexoUpdateDAO(), new AnexoReadDAO(), new AnexoDeleteDAO());
 			
-			return dao.buscarPorId(id);
+			return (Anexo) dao.buscarPorId(id);
 		}catch(Exception e){
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 			
@@ -23,9 +26,9 @@ public class AnexoBO {
 	
 	public List<Anexo> listarPorAta(int idAta) throws Exception{
 		try{
-			AnexoDAO dao = new AnexoDAO();
+			AnexoDAO dao = new AnexoDAO(new AnexoUpdateDAO(), new AnexoReadDAO(), new AnexoDeleteDAO());
 			
-			return dao.listarPorAta(idAta);
+			return (List<Anexo>) dao.listarPorAta(idAta);
 		}catch(Exception e){
 			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 			
@@ -50,7 +53,7 @@ public class AnexoBO {
 			
 			this.validarDados(anexo);
 			
-			AnexoDAO dao = new AnexoDAO();
+			AnexoDAO dao = new AnexoDAO(new AnexoUpdateDAO(), new AnexoReadDAO(), new AnexoDeleteDAO());
 			
 			return dao.salvar(anexo);
 		}catch(Exception e){
@@ -66,7 +69,7 @@ public class AnexoBO {
 	
 	public void excluir(int id) throws Exception{
 		try{
-			AnexoDAO dao = new AnexoDAO();
+			AnexoDAO dao = new AnexoDAO(new AnexoUpdateDAO(), new AnexoReadDAO(), new AnexoDeleteDAO());
 			
 			dao.excluir(id);
 		}catch(Exception e){

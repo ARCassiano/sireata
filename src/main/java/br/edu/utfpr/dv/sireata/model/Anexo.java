@@ -1,6 +1,8 @@
 package br.edu.utfpr.dv.sireata.model;
 
-public class Anexo {
+import br.edu.utfpr.dv.sireata.dao.DAOEntity;
+
+public class Anexo implements DAOEntity{
 	
 	private int idAnexo;
 	private Ata ata;

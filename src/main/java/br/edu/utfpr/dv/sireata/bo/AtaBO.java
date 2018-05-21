@@ -1,5 +1,8 @@
 package br.edu.utfpr.dv.sireata.bo;
 
+import br.edu.utfpr.dv.sireata.algorithms.anexo.AnexoDeleteDAO;
+import br.edu.utfpr.dv.sireata.algorithms.anexo.AnexoReadDAO;
+import br.edu.utfpr.dv.sireata.algorithms.anexo.AnexoUpdateDAO;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.text.DecimalFormat;
@@ -231,7 +234,7 @@ public class AtaBO {
 				int i = 1;
 				
 				for(Anexo a : ata.getAnexos()) {
-					AnexoDAO adao = new AnexoDAO();
+					AnexoDAO adao = new AnexoDAO(new AnexoUpdateDAO(), new AnexoReadDAO(), new AnexoDeleteDAO());
 					
 					a.getAta().setIdAta(id);
 					a.setOrdem(i);
